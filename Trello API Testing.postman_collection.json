@@ -1,0 +1,376 @@
+{
+	"info": {
+		"_postman_id": "19e4bbb9-8fb6-48cf-b3aa-23eda4d7b28a",
+		"name": "Trello API Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24131234"
+	},
+	"item": [
+		{
+			"name": "Trello API first request",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}1/members/me/boards?key={{Key}}&token={{Pass}}",
+					"host": [
+						"{{URL}}1"
+					],
+					"path": [
+						"members",
+						"me",
+						"boards"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Pass}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a board",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}1/boards/:id?key={{Key}}&token={{Pass}}",
+					"host": [
+						"{{URL}}1"
+					],
+					"path": [
+						"boards",
+						":id"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Pass}}"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "635cde192d1e5900ad1b59f8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get lists in a board",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{URL}} 1/boards/:id/lists?key={{Key}}&token={{Pass}} ",
+					"host": [
+						"{{URL}} 1"
+					],
+					"path": [
+						"boards",
+						":id",
+						"lists"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Pass}} "
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "635cde192d1e5900ad1b59f8"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create To Do list",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status Code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Name is To Do List\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.name).to.eql(\"To Do List\");\r",
+							"});\r",
+							"pm.test(\"List is not closed\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.closed).to.eql(false);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}1/lists?idBoard=635cde192d1e5900ad1b59f8&name=To Do List&key={{Key}}&token={{Pass}}",
+					"host": [
+						"{{URL}}1"
+					],
+					"path": [
+						"lists"
+					],
+					"query": [
+						{
+							"key": "idBoard",
+							"value": "635cde192d1e5900ad1b59f8"
+						},
+						{
+							"key": "name",
+							"value": "To Do List"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Pass}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Done list",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}1/lists?idBoard=635cde192d1e5900ad1b59f8&name=Done&key={{Key}}&token={{Pass}}",
+					"host": [
+						"{{URL}}1"
+					],
+					"path": [
+						"lists"
+					],
+					"query": [
+						{
+							"key": "idBoard",
+							"value": "635cde192d1e5900ad1b59f8"
+						},
+						{
+							"key": "name",
+							"value": "Done"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Pass}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a card and add it in a list",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}1/cards?idList=636748531703ff01b070ca83&id=Working with API using Trello&key={{Key}}&token={{Pass}}",
+					"host": [
+						"{{URL}}1"
+					],
+					"path": [
+						"cards"
+					],
+					"query": [
+						{
+							"key": "idList",
+							"value": "636748531703ff01b070ca83"
+						},
+						{
+							"key": "id",
+							"value": "Working with API using Trello"
+						},
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Pass}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Move a card to a diferent list",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}1/cards/:id?key={{Key}}&token={{Pass}}&idList=6367495c785fa1015e4942ad",
+					"host": [
+						"{{URL}}1"
+					],
+					"path": [
+						"cards",
+						":id"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Pass}}"
+						},
+						{
+							"key": "idList",
+							"value": "6367495c785fa1015e4942ad"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "63674b8654619300cb009044"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a board ",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}1/boards/?key={{Key}}&token={{Pass}}&name=Test Board for Deletion",
+					"host": [
+						"{{URL}}1"
+					],
+					"path": [
+						"boards",
+						""
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Pass}}"
+						},
+						{
+							"key": "name",
+							"value": "Test Board for Deletion"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a board",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{URL}}1/boards/?key={{Key}}&token={{Pass}}&name=Test Board for Deletion",
+					"host": [
+						"{{URL}}1"
+					],
+					"path": [
+						"boards",
+						""
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "{{Key}}"
+						},
+						{
+							"key": "token",
+							"value": "{{Pass}}"
+						},
+						{
+							"key": "name",
+							"value": "Test Board for Deletion"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Key",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "Pass",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "URL",
+			"value": "https://api.trello.com/",
+			"type": "string"
+		}
+	]
+}

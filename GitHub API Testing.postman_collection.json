@@ -1,0 +1,527 @@
+{
+	"info": {
+		"_postman_id": "7d9793f4-f2e9-4e73-8239-36c4dc20f196",
+		"name": "GitHub API Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24131234"
+	},
+	"item": [
+		{
+			"name": "Check endpoint",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Endpoint}}",
+					"host": [
+						"{{Endpoint}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Check endpoint status",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Endpoint}}/status",
+					"host": [
+						"{{Endpoint}}"
+					],
+					"path": [
+						"status"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all products",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Endpoint}}/products?category=fresh-produce&results=5",
+					"host": [
+						"{{Endpoint}}"
+					],
+					"path": [
+						"products"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "fresh-produce"
+						},
+						{
+							"key": "results",
+							"value": "5"
+						},
+						{
+							"key": "available",
+							"value": "false",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get product by ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Endpoint}}/products/:productId",
+					"host": [
+						"{{Endpoint}}"
+					],
+					"path": [
+						"products",
+						":productId"
+					],
+					"variable": [
+						{
+							"key": "productId",
+							"value": "5851"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "{{Endpoint}}/carts",
+					"host": [
+						"{{Endpoint}}"
+					],
+					"path": [
+						"carts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a cart",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Endpoint}}/carts/:cartId",
+					"host": [
+						"{{Endpoint}}"
+					],
+					"path": [
+						"carts",
+						":cartId"
+					],
+					"variable": [
+						{
+							"key": "cartId",
+							"value": "CDyazyvvJeaRkTVZDh-Vq"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add an item to cart",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n    {\r\n        \"productId\": 2585,\r\n        \"quantity\": 2\r\n    }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Endpoint}}/carts/:cartId/items",
+					"host": [
+						"{{Endpoint}}"
+					],
+					"path": [
+						"carts",
+						":cartId",
+						"items"
+					],
+					"variable": [
+						{
+							"key": "cartId",
+							"value": "CDyazyvvJeaRkTVZDh-Vq"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get  cart items",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{Endpoint}}/carts/:cartId/items",
+					"host": [
+						"{{Endpoint}}"
+					],
+					"path": [
+						"carts",
+						":cartId",
+						"items"
+					],
+					"variable": [
+						{
+							"key": "cartId",
+							"value": "CDyazyvvJeaRkTVZDh-Vq"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Modifying quantity of an item",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"quantity\": 3\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Endpoint}}/carts/:cartId/items/:itemId",
+					"host": [
+						"{{Endpoint}}"
+					],
+					"path": [
+						"carts",
+						":cartId",
+						"items",
+						":itemId"
+					],
+					"variable": [
+						{
+							"key": "cartId",
+							"value": "CDyazyvvJeaRkTVZDh-Vq"
+						},
+						{
+							"key": "itemId",
+							"value": "377307364"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an item in the cart",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{Endpoint}}/carts/:cartId/items/:itemId",
+					"host": [
+						"{{Endpoint}}"
+					],
+					"path": [
+						"carts",
+						":cartId",
+						"items",
+						":itemId"
+					],
+					"variable": [
+						{
+							"key": "cartId",
+							"value": "CDyazyvvJeaRkTVZDh-Vq"
+						},
+						{
+							"key": "itemId",
+							"value": "671055639"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Replace an item in the cart",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"productId\": 1225,\r\n    \"quantity\": 2\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Endpoint}}/carts/:cartId/items/:itemId",
+					"host": [
+						"{{Endpoint}}"
+					],
+					"path": [
+						"carts",
+						":cartId",
+						"items",
+						":itemId"
+					],
+					"variable": [
+						{
+							"key": "cartId",
+							"value": "CDyazyvvJeaRkTVZDh-Vq"
+						},
+						{
+							"key": "itemId",
+							"value": "377307364"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Auth token",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"clientName\": \"John Doe\",\r\n    \"clientEmail\": \"abc@xyz.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Endpoint}}/api-clients",
+					"host": [
+						"{{Endpoint}}"
+					],
+					"path": [
+						"api-clients"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create an order",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "ddf7cc82761fc8a977985835704d5e19c748c02e81f20d7ff9acd60b058f7f24",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\"cartId\":\"CDyazyvvJeaRkTVZDh-Vq\",\r\n\"customerName\":\"John Doe\",\r\n\"comment\":\"My First Order\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{Endpoint}}/orders",
+					"host": [
+						"{{Endpoint}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all orders",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "ddf7cc82761fc8a977985835704d5e19c748c02e81f20d7ff9acd60b058f7f24",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Endpoint}}/orders",
+					"host": [
+						"{{Endpoint}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a single order",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "ddf7cc82761fc8a977985835704d5e19c748c02e81f20d7ff9acd60b058f7f24",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Endpoint}}/orders/:orderId?invoice=true",
+					"host": [
+						"{{Endpoint}}"
+					],
+					"path": [
+						"orders",
+						":orderId"
+					],
+					"query": [
+						{
+							"key": "invoice",
+							"value": "true"
+						}
+					],
+					"variable": [
+						{
+							"key": "orderId",
+							"value": "q2XKEbtRWspsq9Bp3H8ch"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update an order",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PATCH",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "ddf7cc82761fc8a977985835704d5e19c748c02e81f20d7ff9acd60b058f7f24",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Endpoint}}/orders/:orderId",
+					"host": [
+						"{{Endpoint}}"
+					],
+					"path": [
+						"orders",
+						":orderId"
+					],
+					"variable": [
+						{
+							"key": "orderId",
+							"value": "q2XKEbtRWspsq9Bp3H8ch"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an order",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "ddf7cc82761fc8a977985835704d5e19c748c02e81f20d7ff9acd60b058f7f24",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{Endpoint}}/orders/:orderId",
+					"host": [
+						"{{Endpoint}}"
+					],
+					"path": [
+						"orders",
+						":orderId"
+					],
+					"variable": [
+						{
+							"key": "orderId",
+							"value": "q2XKEbtRWspsq9Bp3H8ch"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "Endpoint",
+			"value": "https://simple-grocery-store-api.glitch.me",
+			"type": "string"
+		}
+	]
+}
